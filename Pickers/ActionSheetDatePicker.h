@@ -35,4 +35,6 @@
 
 - (void)eventForDatePicker:(id)sender;
 
+- (void)setTimeZone:(NSTimeZone*)timeZone;
+
 @end
