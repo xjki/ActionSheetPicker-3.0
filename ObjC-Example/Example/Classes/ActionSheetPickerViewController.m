@@ -69,6 +69,9 @@
         if ([sender respondsToSelector:@selector(setText:)]) {
             [sender performSelector:@selector(setText:) withObject:selectedValue];
         }
+        [self performSelector:@selector(second:) withObject:sender afterDelay:.4];
+//
+//        [self second:sender];
     };
     ActionStringCancelBlock cancel = ^(ActionSheetStringPicker *picker) {
         NSLog(@"Block Picker Canceled");
@@ -77,6 +80,16 @@
     [ActionSheetStringPicker showPickerWithTitle:@"Select a Block" rows:colors initialSelection:0 doneBlock:done cancelBlock:cancel origin:sender];
 }
 
+- (void)second:(id)sender{
+    ActionStringDoneBlock done = ^(ActionSheetStringPicker *picker, NSInteger selectedIndex, id selectedValue) {
+        NSLog(@"a vers si sale");
+    };
+    ActionStringCancelBlock cancel = ^(ActionSheetStringPicker *picker) {
+        NSLog(@"Block Picker Canceled");
+    };
+    NSArray *colors = @[@"Red", @"Green", @"Blue", @"Orange"];
+    [ActionSheetStringPicker showPickerWithTitle:@"Select a Block" rows:colors initialSelection:0 doneBlock:done cancelBlock:cancel origin:sender];
+}
 - (IBAction)selectALocale:(UIControl *)sender {
     ActionLocaleDoneBlock done = ^(ActionSheetLocalePicker *picker, NSTimeZone *selectedValue) {
         if ([sender respondsToSelector:@selector(setText:)]) {
