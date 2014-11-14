@@ -31,24 +31,56 @@
         <hr>
 
         <section id="main_content">
-          <p><a href="http://cocoadocs.org/docsets/DOSingleton"><img src="http://img.shields.io/cocoapods/v/ActionSheetPicker-3.0.svg?style=flat" alt="Version"></a>
-<a href="http://cocoadocs.org/docsets/DOSingleton"><img src="https://img.shields.io/cocoapods/l/ActionSheetPicker-3.0.svg?style=flat" alt="License"></a>
-<a href="http://cocoadocs.org/docsets/DOSingleton"><img src="https://img.shields.io/cocoapods/p/ActionSheetPicker-3.0.svg?style=flat" alt="Platform"></a></p>
+          <p><a href="http://cocoadocs.org/docsets/ActionSheetPicker-3.0"><img src="http://img.shields.io/cocoapods/v/ActionSheetPicker-3.0.svg" alt="Version"></a>
+<a href="https://travis-ci.org/skywinder/ActionSheetPicker-3.0"><img src="https://travis-ci.org/skywinder/ActionSheetPicker-3.0.svg?branch=master" alt="Build Status"></a>
+<a href="http://cocoadocs.org/docsets/ActionSheetPicker-3.0"><img src="https://img.shields.io/cocoapods/l/ActionSheetPicker-3.0.svg" alt="License"></a>
+<a href="http://cocoadocs.org/docsets/ActionSheetPicker-3.0"><img src="https://img.shields.io/cocoapods/p/ActionSheetPicker-3.0.svg" alt="Platform"></a>
+<a href="https://github.com/skywinder/ActionSheetPicker-3.0/issues?state=open"><img src="http://img.shields.io/github/issues/skywinder/ActionSheetPicker-3.0.svg" alt="Issues"></a></p>
 
-<p>Since the <a href="https://github.com/TimCinel/ActionSheetPicker">Tim's repo</a> is outdated, I forked from this repo and implement a bunch of UI fixes, crush-fixes and different customisation abilites.</p>
+<h1>
+<a id="actionsheetpicker-30" class="anchor" href="#actionsheetpicker-30" aria-hidden="true"><span class="octicon octicon-link"></span></a>ActionSheetPicker-3.0</h1>
 
-<p>I try to resolve a lot of pull requests and issues in Tim's repo by time, but new updates will be added here.</p>
+<ul>
+<li>
+<a href="#overview">Overview</a>
 
-<p><code>pod 'ActionSheetPicker-3.0', '~&gt; 1.0.9'</code></p>
+<ul>
+<li><a href="#benefits">Benefits</a></li>
+</ul>
+</li>
+<li>
+<a href="#quickstart">QuickStart</a>
 
-<p>Please welcome: <strong>ActionSheetPicker-3.0</strong>, with fix crashes, new pickers and additions!</p>
+<ul>
+<li><a href="#basic-usage">Basic Usage</a></li>
+<li><a href="#actionsheetcustompicker-customisation">ActionSheetCustomPicker Customisation</a></li>
+</ul>
+</li>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#example-projects">Example Projects</a></li>
+<li><a href="#screen-shots">Screenshots</a></li>
+<li><a href="#apps-using-this-library">Apps using this library</a></li>
+<li><a href="#maintainer-and-contributor">Maintainer and Contributor</a></li>
+<li><a href="#credits">Credits</a></li>
+<li><a href="#contributing">Contributing</a></li>
+</ul>
 
-<p><em>Bug reports, feature requests, patches, well-wishes, and rap demo tapes are always welcome.</em></p>
+<p>Since the <a href="https://github.com/TimCinel/ActionSheetPicker">Tim's repo</a> is not support iOS 7+, I forked from his repo and implement iOS 7-8 support, and also bunch of UI fixes, crash-fixes and different customisation abilities.</p>
+
+<p>New updates will be added only in this repo.</p>
+
+<p>Please welcome: <strong>ActionSheetPicker-3.0</strong>!</p>
+
+<p><code>pod 'ActionSheetPicker-3.0', '~&gt; 1.3.4'</code> (<strong>iOS 6-7-8</strong> compatible!)</p>
+
+<p>Improvements more than welcome - they are kindly requested :)</p>
 
 <p><em>Regards, Petr Korolev</em></p>
 
 <h2>
-<a name="actionsheetpicker--uipickerview--uiactionsheet" class="anchor" href="#actionsheetpicker--uipickerview--uiactionsheet"><span class="octicon octicon-link"></span></a>ActionSheetPicker = UIPickerView + UIActionSheet</h2>
+<a id="actionsheetpicker--uipickerview--uiactionsheet" class="anchor" href="#actionsheetpicker--uipickerview--uiactionsheet" aria-hidden="true"><span class="octicon octicon-link"></span></a>ActionSheetPicker = UIPickerView + UIActionSheet</h2>
+
+<p><img src="https://raw.githubusercontent.com/skywinder/ActionSheetPicker-3.0/master/Screenshots/locale.png" alt="ActionSheetLocalePicker" title="ActionSheetLocalePicker"></p>
 
 <p>Well, that's how it started. Now, the following is more accurate:</p>
 
@@ -58,16 +90,12 @@
 </ul>
 
 <h2>
-<a name="overview" class="anchor" href="#overview"><span class="octicon octicon-link"></span></a>Overview</h2>
+<a id="overview" class="anchor" href="#overview" aria-hidden="true"><span class="octicon octicon-link"></span></a>Overview</h2>
 
-<p>ActionSheetPicker</p>
+<p>Easily present an ActionSheet with a PickerView, allowing user to select from a number of immutable options. </p>
 
-<p>Easily present an ActionSheet with a PickerView, allowing user to select from a number of immutable options. Based on the HTML drop-down alternative found in mobilesafari.</p>
-
-<p>Improvements more than welcome - they are kindly requested :)</p>
-
-<h2>
-<a name="benefits" class="anchor" href="#benefits"><span class="octicon octicon-link"></span></a>Benefits</h2>
+<h3>
+<a id="benefits" class="anchor" href="#benefits" aria-hidden="true"><span class="octicon octicon-link"></span></a>Benefits</h3>
 
 <ul>
 <li>Spawn pickers with convenience function - delegate or reference
@@ -78,99 +106,177 @@ not required. Just provide a target/action callback.</li>
 </ul>
 
 <h2>
-<a name="quickstart" class="anchor" href="#quickstart"><span class="octicon octicon-link"></span></a>QuickStart</h2>
+<a id="quickstart" class="anchor" href="#quickstart" aria-hidden="true"><span class="octicon octicon-link"></span></a>QuickStart</h2>
 
 <p>There are 4 distinct picker view options: <code>ActionSheetStringPicker</code>, <code>ActionSheetDistancePicker</code>, <code>ActionSheetDatePicker</code>, and <code>ActionSheetCustomPicker</code>. We'll focus here on how to use the <code>ActionSheetStringPicker</code> since it's most likely the one you want to use.</p>
 
+<h3>
+<a id="basic-usage" class="anchor" href="#basic-usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Basic Usage</h3>
+
+<div class="highlight highlight-objective-c"><pre><span class="pl-c"><span class="pl-pdc">//</span> Inside a IBAction method:</span>
+
+<span class="pl-c"><span class="pl-pdc">//</span> Create an array of strings you want to show in the picker:</span>
+<span class="pl-sc">NSArray</span> *colors = [<span class="pl-sc">NSArray</span> <span class="pl-sf">arrayWithObjects:</span><span class="pl-s1"><span class="pl-pds">@"</span>Red<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">@"</span>Green<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">@"</span>Blue<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">@"</span>Orange<span class="pl-pds">"</span></span>, <span class="pl-c1">nil</span>];
+
+[ActionSheetStringPicker <span class="pl-sf">showPickerWithTitle:</span><span class="pl-s1"><span class="pl-pds">@"</span>Select a Color<span class="pl-pds">"</span></span>
+                                        <span class="pl-sf">rows:</span>colors
+                            <span class="pl-sf">initialSelection:</span><span class="pl-cn">0</span>
+                                   <span class="pl-sf">doneBlock:</span><span class="pl-c1">nil</span>
+                                 <span class="pl-sf">cancelBlock:</span><span class="pl-c1">nil</span>
+                                      <span class="pl-sf">origin:</span>sender];</pre></div>
+
 <h4>
-<a name="basic-usage" class="anchor" href="#basic-usage"><span class="octicon octicon-link"></span></a>Basic Usage:</h4>
+<a id="but-you-probably-want-to-know-when-something-happens-huh" class="anchor" href="#but-you-probably-want-to-know-when-something-happens-huh" aria-hidden="true"><span class="octicon octicon-link"></span></a>But you probably want to know when something happens, huh?</h4>
 
-<div class="highlight highlight-objective-c"><pre><span class="c1">// Inside a IBAction method:</span>
+<div class="highlight highlight-obj-c"><pre><span class="pl-c"><span class="pl-pdc">//</span> Inside a IBAction method:</span>
 
-<span class="c1">// Create an array of strings you want to show in the picker:</span>
-<span class="bp">NSArray</span> <span class="o">*</span><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSArray</span> <span class="nl">arrayWithObjects</span><span class="p">:</span><span class="s">@"Red"</span><span class="p">,</span> <span class="s">@"Green"</span><span class="p">,</span> <span class="s">@"Blue"</span><span class="p">,</span> <span class="s">@"Orange"</span><span class="p">,</span> <span class="nb">nil</span><span class="p">];</span>
+<span class="pl-c"><span class="pl-pdc">//</span> Create an array of strings you want to show in the picker:</span>
+<span class="pl-sc">NSArray</span> *colors = [<span class="pl-sc">NSArray</span> <span class="pl-sf">arrayWithObjects:</span><span class="pl-s1"><span class="pl-pds">@"</span>Red<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">@"</span>Green<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">@"</span>Blue<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">@"</span>Orange<span class="pl-pds">"</span></span>, <span class="pl-c1">nil</span>];
 
-<span class="p">[</span><span class="n">ActionSheetStringPicker</span> <span class="nl">showPickerWithTitle</span><span class="p">:</span><span class="s">@"Select a Color"</span>
-                                        <span class="nl">rows</span><span class="p">:</span><span class="n">colors</span>
-                            <span class="nl">initialSelection</span><span class="p">:</span><span class="mi">0</span>
-                                   <span class="nl">doneBlock</span><span class="p">:</span><span class="nb">nil</span>
-                                 <span class="nl">cancelBlock</span><span class="p">:</span><span class="nb">nil</span>
-                                      <span class="nl">origin</span><span class="p">:</span><span class="n">sender</span><span class="p">];</span>
-</pre></div>
+[ActionSheetStringPicker <span class="pl-sf">showPickerWithTitle:</span><span class="pl-s1"><span class="pl-pds">@"</span>Select a Color<span class="pl-pds">"</span></span>
+                                        <span class="pl-sf">rows:</span>colors
+                            <span class="pl-sf">initialSelection:</span><span class="pl-cn">0</span>
+                                   <span class="pl-sf">doneBlock:</span>^(ActionSheetStringPicker *picker, <span class="pl-st">NSInteger</span> selectedIndex, <span class="pl-s">id</span> selectedValue) {
+                                      <span class="pl-sf">NSLog</span>(<span class="pl-s1"><span class="pl-pds">@"</span>Picker: <span class="pl-c1">%@</span><span class="pl-pds">"</span></span>, picker);
+                                      <span class="pl-sf">NSLog</span>(<span class="pl-s1"><span class="pl-pds">@"</span>Selected Index: <span class="pl-c1">%@</span><span class="pl-pds">"</span></span>, selectedIndex);
+                                      <span class="pl-sf">NSLog</span>(<span class="pl-s1"><span class="pl-pds">@"</span>Selected Value: <span class="pl-c1">%@</span><span class="pl-pds">"</span></span>, selectedValue);
+                                    }
+                                 <span class="pl-sf">cancelBlock:</span>^(ActionSheetStringPicker *picker) {
+                                      <span class="pl-sf">NSLog</span>(<span class="pl-s1"><span class="pl-pds">@"</span>Block Picker Canceled<span class="pl-pds">"</span></span>);
+                                    }
+                                      <span class="pl-sf">origin:</span>sender];
+<span class="pl-c"><span class="pl-pdc">//</span> You can also use self.view if you don't have a sender</span></pre></div>
 
-<h4>
-<a name="but-you-probably-want-to-know-when-something-happens-huh" class="anchor" href="#but-you-probably-want-to-know-when-something-happens-huh"><span class="octicon octicon-link"></span></a>But you probably want to know when something happens, huh?</h4>
-
-<div class="highlight highlight-obj-c"><pre><span class="c1">// Inside a IBAction method:</span>
-
-<span class="c1">// Create an array of strings you want to show in the picker:</span>
-<span class="bp">NSArray</span> <span class="o">*</span><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSArray</span> <span class="nl">arrayWithObjects</span><span class="p">:</span><span class="s">@"Red"</span><span class="p">,</span> <span class="s">@"Green"</span><span class="p">,</span> <span class="s">@"Blue"</span><span class="p">,</span> <span class="s">@"Orange"</span><span class="p">,</span> <span class="nb">nil</span><span class="p">];</span>
-
-<span class="p">[</span><span class="n">ActionSheetStringPicker</span> <span class="nl">showPickerWithTitle</span><span class="p">:</span><span class="s">@"Select a Color"</span>
-                                        <span class="nl">rows</span><span class="p">:</span><span class="n">colors</span>
-                            <span class="nl">initialSelection</span><span class="p">:</span><span class="mi">0</span>
-                                   <span class="nl">doneBlock</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">ActionSheetStringPicker</span> <span class="o">*</span><span class="n">picker</span><span class="p">,</span> <span class="bp">NSInteger</span> <span class="n">selectedIndex</span><span class="p">,</span> <span class="kt">id</span> <span class="n">selectedValue</span><span class="p">)</span> <span class="p">{</span>
-                                      <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Picker: %@"</span><span class="p">,</span> <span class="n">picker</span><span class="p">);</span>
-                                      <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Selected Index: %@"</span><span class="p">,</span> <span class="n">selectedIndex</span><span class="p">);</span>
-                                      <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Selected Value: %@"</span><span class="p">,</span> <span class="n">selectedValue</span><span class="p">);</span>
-                                    <span class="p">}</span>
-                                 <span class="nl">cancelBlock</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">ActionSheetStringPicker</span> <span class="o">*</span><span class="n">picker</span><span class="p">)</span> <span class="p">{</span>
-                                      <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Block Picker Canceled"</span><span class="p">);</span>
-                                    <span class="p">}</span>
-                                      <span class="nl">origin</span><span class="p">:</span><span class="n">sender</span><span class="p">];</span>
-<span class="c1">// You can also use self.view if you don't have a sender</span>
-</pre></div>
-
-<h2>
-<a name="screen-shots" class="anchor" href="#screen-shots"><span class="octicon octicon-link"></span></a>Screen Shots</h2>
-
-<p><img src="Screenshots/string.png" alt="ActionSheetPicker" title="ActionSheetPicker">
-<img src="Screenshots/date.png" alt="ActionSheetDatePicker" title="ActionSheetDatePicker">
-<img src="Screenshots/distance.png" alt="ActionSheetDistancePicker" title="ActionSheetDistancePicker">
-<img src="Screenshots/ipad.png" alt="iPad Support" title="iPad Support"></p>
-
-<h2>
-<a name="actionsheetcustompicker-customization" class="anchor" href="#actionsheetcustompicker-customization"><span class="octicon octicon-link"></span></a>ActionSheetCustomPicker Customization</h2>
+<h3>
+<a id="actionsheetcustompicker-customisation" class="anchor" href="#actionsheetcustompicker-customisation" aria-hidden="true"><span class="octicon octicon-link"></span></a>ActionSheetCustomPicker Customisation</h3>
 
 <p>ActionSheetCustomPicker provides the following delegate function that can be used for customization:</p>
 
-<div class="highlight highlight-obj-c"><pre><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">actionSheetPicker:</span><span class="p">(</span><span class="n">AbstractActionSheetPicker</span> <span class="o">*</span><span class="p">)</span><span class="nv">actionSheetPicker</span> <span class="nf">configurePickerView:</span><span class="p">(</span><span class="bp">UIPickerView</span> <span class="o">*</span><span class="p">)</span><span class="nv">pickerView</span><span class="p">;</span>
-</pre></div>
+<div class="highlight highlight-obj-c"><pre>- (<span class="pl-s">void</span>)actionSheetPicker:(AbstractActionSheetPicker *)actionSheetPicker configurePickerView:(UIPickerView *)pickerView;</pre></div>
 
 <p>This method is called right before <code>actionSheetPicker</code> is presented and it can be used to customize the appearance and properties of the <code>actionSheetPicker</code> and the <code>pickerView</code> associated with it.</p>
 
+<h4>
+<a id="want-custom-buttons-view-ok" class="anchor" href="#want-custom-buttons-view-ok" aria-hidden="true"><span class="octicon octicon-link"></span></a>Want custom buttons view? Ok!</h4>
+
+<p>Example with custom text in Done button:</p>
+
+<div class="highlight highlight-obj-c"><pre>    ActionSheetStringPicker *picker = [[ActionSheetStringPicker <span class="pl-sf">alloc</span>] <span class="pl-sf">initWithTitle:</span><span class="pl-s1"><span class="pl-pds">@"</span>Select a Block<span class="pl-pds">"</span></span> <span class="pl-sf">rows:</span>colors <span class="pl-sf">initialSelection:</span><span class="pl-cn">0</span> <span class="pl-sf">doneBlock:</span>done <span class="pl-sf">cancelBlock:</span>cancel <span class="pl-sf">origin:</span>sender];
+    [picker <span class="pl-sf">setDoneButton:</span>[[UIBarButtonItem <span class="pl-sf">alloc</span>] <span class="pl-sf">initWithTitle:</span><span class="pl-s1"><span class="pl-pds">@"</span>My Text<span class="pl-pds">"</span></span>  <span class="pl-sf">style:</span>UIBarButtonItemStylePlain <span class="pl-sf">target:</span><span class="pl-c1">nil</span> <span class="pl-sf">action:</span><span class="pl-c1">nil</span>]];
+    [picker <span class="pl-sf">showActionSheetPicker</span>];</pre></div>
+
+<p>Example with custom button for cancel button:</p>
+
+<div class="highlight highlight-obj-c"><pre>    ActionSheetStringPicker *picker = [[ActionSheetStringPicker <span class="pl-sf">alloc</span>] <span class="pl-sf">initWithTitle:</span><span class="pl-s1"><span class="pl-pds">@"</span>Select a Block<span class="pl-pds">"</span></span> <span class="pl-sf">rows:</span>colors <span class="pl-sf">initialSelection:</span><span class="pl-cn">0</span> <span class="pl-sf">doneBlock:</span>done <span class="pl-sf">cancelBlock:</span>cancel <span class="pl-sf">origin:</span>sender];
+    UIButton *cancelButton =  [UIButton <span class="pl-sf">buttonWithType:</span>UIButtonTypeCustom];
+    [cancelButton <span class="pl-sf">setImage:</span>[UIImage <span class="pl-sf">imageNamed:</span><span class="pl-s1"><span class="pl-pds">@"</span>cancel.png<span class="pl-pds">"</span></span>] <span class="pl-sf">forState:</span>UIControlStateNormal];
+    [cancelButton <span class="pl-sf">setFrame:</span><span class="pl-sf">CGRectMake</span>(<span class="pl-cn">0</span>, <span class="pl-cn">0</span>, <span class="pl-cn">32</span>, <span class="pl-cn">32</span>)];
+    [picker <span class="pl-sf">setCancelButton:</span>[[UIBarButtonItem <span class="pl-sf">alloc</span>] <span class="pl-sf">initWithCustomView:</span>cancelButton]];
+    [picker <span class="pl-sf">showActionSheetPicker</span>];</pre></div>
+
+<h4>
+<a id="what-about-custom-buttons-callbacks-lets-check-it-out" class="anchor" href="#what-about-custom-buttons-callbacks-lets-check-it-out" aria-hidden="true"><span class="octicon octicon-link"></span></a>What about custom buttons callbacks? Let's check it out:</h4>
+
+<div class="highlight highlight-obj-c"><pre> <span class="pl-c"><span class="pl-pdc">//</span> Inside a IBAction method:</span>
+
+ <span class="pl-c"><span class="pl-pdc">//</span> Create an array of strings you want to show in the picker:</span>
+<span class="pl-sc">NSArray</span> *colors = [<span class="pl-sc">NSArray</span> <span class="pl-sf">arrayWithObjects:</span><span class="pl-s1"><span class="pl-pds">@"</span>Red<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">@"</span>Green<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">@"</span>Blue<span class="pl-pds">"</span></span>, <span class="pl-s1"><span class="pl-pds">@"</span>Orange<span class="pl-pds">"</span></span>, <span class="pl-c1">nil</span>];
+
+ <span class="pl-c"><span class="pl-pdc">//</span>Create your picker:</span>
+ActionSheetStringPicker *colorPicker = [[ActionSheetStringPicker <span class="pl-sf">alloc</span>] <span class="pl-sf">initWithTitle:</span><span class="pl-s1"><span class="pl-pds">@"</span>Select a color<span class="pl-pds">"</span></span>
+                                                                                 <span class="pl-sf">rows:</span>colors
+                                                                     <span class="pl-sf">initialSelection:</span><span class="pl-cn">0</span>
+                                                                               <span class="pl-sf">target:</span><span class="pl-c1">nil</span>
+                                                                        <span class="pl-sf">successAction:</span><span class="pl-c1">nil</span>
+                                                                         <span class="pl-sf">cancelAction:</span><span class="pl-c1">nil</span>
+                                                                               <span class="pl-sf">origin:</span>sender];
+
+ <span class="pl-c"><span class="pl-pdc">//</span>You can pass your picker a value on custom button being pressed:</span>
+[colorPicker <span class="pl-sf">addCustomButtonWithTitle:</span><span class="pl-s1"><span class="pl-pds">@"</span>Value<span class="pl-pds">"</span></span> <span class="pl-sf">value:</span>@([colors <span class="pl-sf">indexOfObject:</span>colors.lastObject])];
+
+ <span class="pl-c"><span class="pl-pdc">//</span>Or you can pass it custom block:</span>
+[colorPicker <span class="pl-sf">addCustomButtonWithTitle:</span><span class="pl-s1"><span class="pl-pds">@"</span>Block<span class="pl-pds">"</span></span> <span class="pl-sf">actionBlock:</span>^{
+    <span class="pl-sf">NSLog</span>(<span class="pl-s1"><span class="pl-pds">@"</span>Custom block invoked<span class="pl-pds">"</span></span>);
+}];
+
+ <span class="pl-c"><span class="pl-pdc">//</span>If you prefer to send selectors rather than blocks you can use this method:</span>
+[colorPicker <span class="pl-sf">addCustomButtonWithTitle:</span><span class="pl-s1"><span class="pl-pds">@"</span>Selector<span class="pl-pds">"</span></span> <span class="pl-sf">target:</span><span class="pl-v">self</span> <span class="pl-sf">selector:</span><span class="pl-ms"><span class="pl-s">@selector</span>(<span class="pl-ms"><span class="pl-sf">awesomeSelector</span></span>)</span>];</pre></div>
+
 <h2>
-<a name="credits" class="anchor" href="#credits"><span class="octicon octicon-link"></span></a>Credits</h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
 
-<p>Thanks to all of the contributors for making ActionSheetPicker better for the iOS developer community. See AUTHORS for details.</p>
+<ul>
+<li><p>The most easiest way is through <a href="http://cocoapods.org/">Cocoapods</a>.
+Just add to your Podfile string: <code>pod 'ActionSheetPicker-3.0'</code></p></li>
+<li><p>The "old school" way is manually add to your project all from <a href="/Pickers">Pickers</a> folder and import necessary headers.</p></li>
+</ul>
 
-<h3>
-<a name="contributors" class="anchor" href="#contributors"><span class="octicon octicon-link"></span></a>Contributors</h3>
+<h2>
+<a id="example-projects" class="anchor" href="#example-projects" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example Projects</h2>
 
-<p><a href="http://github.com/sfilo">Filote Stefan</a></p>
+<h4>
+<a id="for-ios-8-objective-c--swift" class="anchor" href="#for-ios-8-objective-c--swift" aria-hidden="true"><span class="octicon octicon-link"></span></a>For iOS 8 (Objective-C + Swift):</h4>
 
-<p><a href="http://github.com/brettg">Brett Gibson</a></p>
+<p><code>open Example.xcworkspace</code></p>
 
-<p><a href="http://github.com/johnnyg">John Garland</a> (iPad!)</p>
+<p>Here is 4 projects:</p>
 
-<p><a href="http://github.com/heyhoo">Mark van den Broek</a></p>
+<ul>
+<li>
+<strong>CoreActionSheetPicker</strong> - all picker files combined in one Framework. (available since <code>iOS 8</code>)</li>
+<li>
+<strong>ActionSheetPicker</strong> - modern and descriptive Obj-C project with many examples.</li>
+<li>
+<strong>Swift-Example</strong> - example, written on Swift. (only with basic 3 Pickers examples, for all examples please run <code>ActionSheetPicker</code> project)</li>
+<li>
+<strong>ActionSheetPicker-iOS6-7</strong> -  iOS 6 and 7 comparable project. or to run only this project <code>open Example-for-and-6/ActionSheetPicker.xcodeproj</code>
+</li>
+</ul>
 
-<p><a href="http://github.com/ecordell">Evan Cordell</a></p>
+<h2>
+<a id="screen-shots" class="anchor" href="#screen-shots" aria-hidden="true"><span class="octicon octicon-link"></span></a>Screen Shots</h2>
 
-<p><a href="http://github.com/grgcombs">Greg Combs</a> (Refactor!)</p>
+<p><img src="https://raw.githubusercontent.com/skywinder/ActionSheetPicker-3.0/master/Screenshots/string.png" alt="ActionSheetPicker" title="ActionSheetPicker">
+<img src="https://raw.githubusercontent.com/skywinder/ActionSheetPicker-3.0/master/Screenshots/date.png" alt="ActionSheetDatePicker" title="ActionSheetDatePicker">
+<img src="https://raw.githubusercontent.com/Jack-s/ActionSheetPicker-3.0/master/Screenshots/time.png" alt="ActionSheetDatePicker" title="ActionSheetDatePicker">
+<img src="https://raw.githubusercontent.com/skywinder/ActionSheetPicker-3.0/master/Screenshots/custom.png" alt="CustomButtons" title="CustomButtons">
+<img src="https://raw.githubusercontent.com/skywinder/ActionSheetPicker-3.0/master/Screenshots/ipad.png" alt="iPad Support" title="iPad Support"></p>
 
-<p><a href="http://github.com/skywinder">Petr Korolev</a> (Update, crash-fix update for iOS7, new pickers)</p>
+<h2>
+<a id="apps-using-this-library" class="anchor" href="#apps-using-this-library" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="https://github.com/skywinder/ActionSheetPicker-3.0/wiki/Apps-using-ActionSheetPicker-3.0">Apps using this library</a>
+</h2>
 
-<p><a href="http://github.com/NikDude">Nikos Mouzakitis</a></p>
+<p><em>If you are using <code>ActionSheetPicker-3.0</code> in your app or know of an app that uses it, please add it to <a href="https://github.com/skywinder/ActionSheetPicker-3.0/wiki/Apps-using-ActionSheetPicker-3.0">this</a> list.</em></p>
 
-<h3>
-<a name="creator" class="anchor" href="#creator"><span class="octicon octicon-link"></span></a>Creator</h3>
+<h2>
+<a id="maintainer-and-contributor" class="anchor" href="#maintainer-and-contributor" aria-hidden="true"><span class="octicon octicon-link"></span></a>Maintainer and Contributor</h2>
 
-<p><a href="http://github.com/TimCinel">Tim Cinel</a></p>
+<ul>
+<li>
+<a href="http://github.com/skywinder">Petr Korolev</a> (update to iOS 7 and iOS 8, implementing new pickers, community support)</li>
+</ul>
 
-<p><a href="http://twitter.com/TimCinel">@TimCinel</a></p>
+<h2>
+<a id="credits" class="anchor" href="#credits" aria-hidden="true"><span class="octicon octicon-link"></span></a>Credits</h2>
 
-<p><a href="http://www.timcinel.com/">timcinel.com/</a></p>
+<ul>
+<li><p>ActionSheetPicker was originally created by <a href="http://github.com/TimCinel">Tim Cinel</a> (<a href="http://twitter.com/TimCinel">@TimCinel</a>)</p></li>
+<li><p>And most of all, thanks to ActionSheetPicker-3.0's <a href="https://github.com/skywinder/ActionSheetPicker-3.0/graphs/contributors">growing list of contributors</a>.</p></li>
+</ul>
+
+<h2>
+<a id="contributing" class="anchor" href="#contributing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contributing</h2>
+
+<ol>
+<li>Create an issue to discuss about your idea</li>
+<li>Fork it (<a href="https://github.com/skywinder/ActionSheetPicker-3.0/fork">https://github.com/skywinder/ActionSheetPicker-3.0/fork</a>)</li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+<li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+<li>Create a new Pull Request</li>
+</ol>
+
+<p><strong>Bug reports, feature requests, patches, well-wishes, and rap demo tapes are always welcome.</strong></p>
         </section>
 
         <footer>
