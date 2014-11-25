@@ -491,7 +491,7 @@
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/petrkorolev/repo/ActionSheetPicker-3.0/CoreActionSheetPicker/CoreActionSheetPicker/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/**",
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Example-heqowupkotascefopnknxqwrfsgq/Build/Products/Debug-iphoneos",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -517,7 +517,7 @@
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/petrkorolev/repo/ActionSheetPicker-3.0/CoreActionSheetPicker/CoreActionSheetPicker/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/**",
 					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Example-heqowupkotascefopnknxqwrfsgq/Build/Products/Debug-iphoneos",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
