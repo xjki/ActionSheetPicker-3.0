@@ -492,7 +492,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/**",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Example-heqowupkotascefopnknxqwrfsgq/Build/Products/Debug-iphoneos",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -518,7 +517,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/**",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/Example-heqowupkotascefopnknxqwrfsgq/Build/Products/Debug-iphoneos",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ActionSheetPicker_Prefix.pch;
