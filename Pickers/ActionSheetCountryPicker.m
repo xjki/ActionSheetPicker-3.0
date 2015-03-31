@@ -28,8 +28,6 @@
 #import "ActionSheetCountryPicker.h"
 
 @interface ActionSheetCountryPicker()
-//@property (nonatomic,strong) NSArray *data;
-//@property (nonatomic,assign) NSInteger selectedIndex;
 
 + (NSArray *)countryNames;
 + (NSArray *)countryCodes;
@@ -40,29 +38,22 @@
 @property (nonatomic, copy) NSString *selectedCountryCode;
 @property (nonatomic, copy) NSLocale *selectedLocale;
 
+@property(nonatomic, strong) NSString *initialCountryCode;
 
-
-@property(nonatomic, strong) NSTimeZone *initialTimeZone;
-
-@property (nonatomic, strong) NSString *selectedContinent;
-@property (nonatomic, strong) NSString *selectedCity;
-
-@property(nonatomic, strong) NSMutableDictionary *continentsAndCityDictionary;
-@property(nonatomic, strong) NSMutableArray *continents;
 @end
 
 @implementation ActionSheetCountryPicker
 
-+ (instancetype)showPickerWithTitle:(NSString *)title initialSelection:(NSTimeZone *)index doneBlock:(ActionCountryDoneBlock)doneBlock cancelBlock:(ActionCountryCancelBlock)cancelBlockOrNil origin:(id)origin
++ (instancetype)showPickerWithTitle:(NSString *)title initialSelection:(NSString *)countryCode doneBlock:(ActionCountryDoneBlock)doneBlock cancelBlock:(ActionCountryCancelBlock)cancelBlockOrNil origin:(id)origin
 {
-    ActionSheetCountryPicker * picker = [[ActionSheetCountryPicker alloc] initWithTitle:title initialSelection:index doneBlock:doneBlock cancelBlock:cancelBlockOrNil origin:origin];
+    ActionSheetCountryPicker * picker = [[ActionSheetCountryPicker alloc] initWithTitle:title initialSelection:countryCode doneBlock:doneBlock cancelBlock:cancelBlockOrNil origin:origin];
     [picker showActionSheetPicker];
     return picker;
 }
 
-- (instancetype)initWithTitle:(NSString *)title initialSelection:(NSTimeZone *)timeZone doneBlock:(ActionCountryDoneBlock)doneBlock cancelBlock:(ActionCountryCancelBlock)cancelBlockOrNil origin:(id)origin
+- (instancetype)initWithTitle:(NSString *)title initialSelection:(NSString *)countryCode doneBlock:(ActionCountryDoneBlock)doneBlock cancelBlock:(ActionCountryCancelBlock)cancelBlockOrNil origin:(id)origin
 {
-    self = [self initWithTitle:title initialSelection:timeZone target:nil successAction:nil cancelAction:nil origin:origin];
+    self = [self initWithTitle:title initialSelection:countryCode target:nil successAction:nil cancelAction:nil origin:origin];
     if (self) {
         self.onActionSheetDone = doneBlock;
         self.onActionSheetCancel = cancelBlockOrNil;
@@ -70,18 +61,18 @@
     return self;
 }
 
-+ (instancetype)showPickerWithTitle:(NSString *)title initialSelection:(NSTimeZone *)index target:(id)target successAction:(SEL)successAction cancelAction:(SEL)cancelActionOrNil origin:(id)origin
++ (instancetype)showPickerWithTitle:(NSString *)title initialSelection:(NSString *)countryCode target:(id)target successAction:(SEL)successAction cancelAction:(SEL)cancelActionOrNil origin:(id)origin
 {
-    ActionSheetCountryPicker *picker = [[ActionSheetCountryPicker alloc] initWithTitle:title initialSelection:index target:target successAction:successAction cancelAction:cancelActionOrNil origin:origin];
+    ActionSheetCountryPicker *picker = [[ActionSheetCountryPicker alloc] initWithTitle:title initialSelection:countryCode target:target successAction:successAction cancelAction:cancelActionOrNil origin:origin];
     [picker showActionSheetPicker];
     return picker;
 }
 
-- (instancetype)initWithTitle:(NSString *)title initialSelection:(NSTimeZone *)index target:(id)target successAction:(SEL)successAction cancelAction:(SEL)cancelActionOrNil origin:(id)origin
+- (instancetype)initWithTitle:(NSString *)title initialSelection:(NSString *)countryCode target:(id)target successAction:(SEL)successAction cancelAction:(SEL)cancelActionOrNil origin:(id)origin
 {
     self = [self initWithTarget:target successAction:successAction cancelAction:cancelActionOrNil origin:origin];
     if (self) {
-        self.initialTimeZone = index;
+        self.initialCountryCode = countryCode;
         self.title = title;
     }
     return self;
@@ -89,8 +80,7 @@
 
 
 - (UIView *)configuredPickerView {
-    //[self fillContinentsAndCities];
-    //[self setSelectedRows];
+    [self setSelectedRows];
     
     CGRect pickerFrame = CGRectMake(0, 40, self.viewSize.width, 216);
     UIPickerView *pickerView = [[UIPickerView alloc] initWithFrame:pickerFrame];
@@ -99,7 +89,7 @@
     
     pickerView.showsSelectionIndicator = YES;
     
-    //[self selectCurrentLocale:pickerView];
+    [self selectCurrentLocale:pickerView];
     
     //need to keep a reference to the picker so we can clear the DataSource / Delegate when dismissing
     self.pickerView = pickerView;
@@ -109,118 +99,44 @@
 
 - (void)selectCurrentLocale:(UIPickerView *)pickerView
 {
-    NSUInteger rowContinent = [_continents indexOfObject:self.selectedContinent];
-    NSUInteger rowCity = [[self getCitiesByContinent:self.selectedContinent] indexOfObject:self.selectedCity];
+    NSUInteger rowCountry = [[[self class] countryCodes] indexOfObject:_selectedCountryCode];
     
-    if ((rowContinent != NSNotFound) && (rowCity != NSNotFound)) // to fix some crashes from prev versions http://crashes.to/s/ecb0f15ce49
+    if ((rowCountry != NSNotFound) ) // to fix some crashes from prev versions http://crashes.to/s/ecb0f15ce49
     {
-        [pickerView selectRow:rowContinent inComponent:0 animated:YES];
-        [pickerView reloadComponent:1];
-        [pickerView selectRow:rowCity inComponent:1 animated:YES];
+        [pickerView selectRow:rowCountry inComponent:0 animated:YES];
     }
     else
     {
         [pickerView selectRow:0 inComponent:0 animated:YES];
-        [pickerView selectRow:0 inComponent:1 animated:YES];
     }
 }
 
--(void)fillContinentsAndCities
-{
-/*    NSArray *timeZones = [NSTimeZone knownTimeZoneNames];
-    
-    NSMutableDictionary *continentsDict = [[NSMutableDictionary alloc] init];
-    
-    _continents= [[NSMutableArray alloc] init];
-    
-    [timeZones enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop)
-     {
-         if ( [obj isKindOfClass:[NSString class]] )
-         {
-             NSString *string = (NSString *) obj;
-             NSArray *array = [string componentsSeparatedByString:@"/"];
-             
-             if ( [array count] == 2)
-             {
-                 if ( continentsDict[array[0]] ) //if continent exists
-                 {
-                     NSMutableArray *citys = continentsDict[array[0]];
-                     [citys addObject:array[1]];
-                 }
-                 else //it's new continent
-                 {
-                     NSMutableArray *mutableArray = [@[array[1]] mutableCopy];
-                     continentsDict[array[0]] = mutableArray;
-                     [_continents addObject:array[0]];
-                 }
-             }
-             else if (array.count == 3)
-             {
-                 NSString *string0 = array[0];
-                 NSString *string1 = array[1];
-                 NSString *string2 = array[2];
-                 NSString *string3 = [string1 stringByAppendingFormat:@"/%@", string2];
-                 
-                 if ( continentsDict[string0] ) //if continent exists
-                 {
-                     NSMutableArray *citys = continentsDict[string0];
-                     [citys addObject:string3];
-                 }
-                 else //it's new continent
-                 {
-                     NSMutableArray *mutableArray = [@[string3] mutableCopy];
-                     continentsDict[string0] = mutableArray;
-                     [_continents addObject:string0];
-                 }
-             }
-         }
-         
-     }];
-    
-    self.continentsAndCityDictionary = continentsDict; */
-};
-
 - (void)setSelectedRows
 {
-/*    NSString *string;
-    if (self.initialTimeZone)
-        string = self.initialTimeZone.name;
-    else
-        string = [[NSTimeZone localTimeZone] name];
-    
-    NSArray *array = [string componentsSeparatedByString:@"/"];
-    if (array.count == 1)
-    {
-        // Unknown time zone - appeared only in travis builds.
-        self.selectedContinent = _continents[0];
-        self.selectedCity = [self getCitiesByContinent:self.selectedContinent][0];
-    }
-    else if (array.count == 2)
-    {
-        self.selectedContinent = array[0];
-        self.selectedCity = array[1];
-    }
+    NSString *countryCode;
+    if (self.initialCountryCode)
+        countryCode = self.initialCountryCode;
     else
     {
-        assert(NO);
+        NSLocale *currentLocale = [NSLocale currentLocale];  // get the current locale.
+        countryCode = [currentLocale objectForKey:NSLocaleCountryCode];
     }
-  */
+ 
+    self.selectedCountryCode = countryCode;
 }
 
 
 - (void)notifyTarget:(id)target didSucceedWithAction:(SEL)successAction origin:(id)origin {
     
-    NSString *timeZoneId = [NSString stringWithFormat:@"%@/%@", self.selectedContinent, self.selectedCity];
-    NSTimeZone *timeZone = [[NSTimeZone alloc] initWithName:timeZoneId];
-    
+    self.selectedCountryName = [[NSLocale systemLocale] displayNameForKey:NSLocaleCountryCode value:_selectedCountryCode];
     if (self.onActionSheetDone) {
-        _onActionSheetDone(self, timeZone);
+        _onActionSheetDone(self, self.selectedCountryCode, self.selectedCountryName );
         return;
     }
     else if (target && [target respondsToSelector:successAction]) {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-        [target performSelector:successAction withObject:timeZone withObject:origin];
+        [target performSelector:successAction withObject:self.selectedCountryCode withObject:origin];
 #pragma clang diagnostic pop
         return;
     }
@@ -240,26 +156,6 @@
     }
 }
 
-#pragma mark - UIPickerViewDelegate / DataSource
-//
-//- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-//    id obj = [self.data objectAtIndex:(NSUInteger) row];
-//
-//    // return the object if it is already a NSString,
-//    // otherwise, return the description, just like the toString() method in Java
-//    // else, return nil to prevent exception
-//
-//    if ([obj isKindOfClass:[NSString class]])
-//        return obj;
-//
-//    if ([obj respondsToSelector:@selector(description)])
-//        return [obj performSelector:@selector(description)];
-//
-//    return nil;
-//}
-//
-
-
 /////////////////////////////////////////////////////////////////////////
 #pragma mark - UIPickerViewDataSource Implementation
 /////////////////////////////////////////////////////////////////////////
@@ -273,33 +169,12 @@
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
     // Returns
-    //switch (component) {
-    //    case 0: return [_continents count];
-    //    case 1: return [[self getCitiesByContinent:self.selectedContinent] count];
-    //    default:break;
-    //}
-    //return 0;
     return (NSInteger)[[[self class] countryCodes] count];
 }
 
 /////////////////////////////////////////////////////////////////////////
 #pragma mark UIPickerViewDelegate Implementation
 /////////////////////////////////////////////////////////////////////////
-
-// returns width of column and height of row for each component.
-/*
- - (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component
-{
-    
-    switch (component) {
-            
-        case 0: return firstColumnWidth;
-        case 1: return secondColumnWidth;
-        default:break;
-    }
-    
-    return 0;
-}*/
 
 - (UIView *)pickerView:(UIPickerView *)pickerView
             viewForRow:(NSInteger)row
@@ -327,87 +202,15 @@
     
     
     return view;
-    
-    /*UILabel *pickerLabel = (UILabel *)view;
-    
-    if (pickerLabel == nil) {
-        CGRect frame = CGRectZero;
-        
-        
-        switch (component) {
-            case 0: frame = CGRectMake(0.0, 0.0, firstColumnWidth, 32);
-                break;
-            case 1:
-                frame = CGRectMake(0.0, 0.0, secondColumnWidth, 32);
-                break;
-            default:
-                assert(NO);
-                break;
-        }
-        
-        pickerLabel = [[UILabel alloc] initWithFrame:frame];
-        [pickerLabel setTextAlignment:NSTextAlignmentCenter];
-        [pickerLabel setMinimumScaleFactor:0.5];
-        [pickerLabel setAdjustsFontSizeToFitWidth:YES];
-        [pickerLabel setBackgroundColor:[UIColor clearColor]];
-        [pickerLabel setFont:[UIFont systemFontOfSize:20]];
-    }
-    
-    NSString *text;
-    switch (component) {
-        case 0: text = (self.continents)[(NSUInteger) row];
-            break;
-        case 1:
-        {
-            NSString *cityTitle = [self getCitiesByContinent:self.selectedContinent][(NSUInteger) row];
-            NSString *timeZoneId = [NSString stringWithFormat:@"%@/%@", self.selectedContinent, cityTitle];
-            NSTimeZone *timeZone = [[NSTimeZone alloc] initWithName:timeZoneId];
-            
-            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-            [dateFormatter setTimeZone:timeZone];
-            [dateFormatter setDateFormat:@"z"];
-            text = [cityTitle stringByAppendingString:[NSString stringWithFormat: @" (%@)", [dateFormatter stringFromDate:[NSDate date]]]];
-            
-            break;
-        }
-        default:break;
-    }
-    
-    [pickerLabel setText:text];
-    
-    return pickerLabel;*/
-    
 }
 
 /////////////////////////////////////////////////////////////////////////
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    //didSelectCountryWithName:[self.selectedCountryName code:self.selectedCountryCode];
-
-/*    switch (component) {
-        case 0:
-        {
-            self.selectedContinent = (self.continents)[(NSUInteger) row];
-            [pickerView reloadComponent:1];
-            self.selectedCity = [self getCitiesByContinent:self.selectedContinent][(NSUInteger) [pickerView selectedRowInComponent:1]];
-            return;
-        }
-            
-        case 1:
-            self.selectedCity = [self getCitiesByContinent:self.selectedContinent][(NSUInteger) row];
-            return;
-        default:break;
-    }
-*/
+    self.selectedCountryCode = [[self class] countryCodes][(NSUInteger) row];
+    return;
 }
-
--(NSMutableArray *)getCitiesByContinent:(NSString *)continent
-{
-    NSMutableArray *citiesIncontinent = _continentsAndCityDictionary[continent];
-    return citiesIncontinent;
-};
-
 
 - (void)customButtonPressed:(id)sender {
     UIBarButtonItem *button = (UIBarButtonItem*)sender;
@@ -423,8 +226,9 @@
             id itemValue = buttonDetails[kButtonValue];
             if ( [itemValue isKindOfClass:[NSTimeZone class]] )
             {
-                NSTimeZone *timeZone = (NSTimeZone *) itemValue;
-                self.initialTimeZone = timeZone;
+                NSLocale *currentLocale = [NSLocale currentLocale];  // get the current locale.
+                NSString *countryCode   = [currentLocale objectForKey:NSLocaleCountryCode];
+                self.initialCountryCode = countryCode;
                 [self setSelectedRows];
                 [self selectCurrentLocale:(UIPickerView *) self.pickerView];
             }
@@ -476,7 +280,7 @@
             //workaround for simulator bug
             if (!countryName)
             {
-                countryName = [[NSLocale localeWithLocaleIdentifier:@"en_US"] displayNameForKey:NSLocaleCountryCode value:code];
+               countryName = [[NSLocale localeWithLocaleIdentifier:@"en_US"] displayNameForKey:NSLocaleCountryCode value:code];
             }
             
             namesByCode[code] = countryName ?: code;
@@ -501,8 +305,4 @@
     }
     return _countryCodesByName;
 }
-
-
-
-
 @end

@@ -28,11 +28,8 @@
 #import "AbstractActionSheetPicker.h"
 
 @class ActionSheetCountryPicker;
-typedef void(^ActionCountryDoneBlock)(ActionSheetCountryPicker *picker, NSTimeZone * selectedValue);
+typedef void(^ActionCountryDoneBlock)(ActionSheetCountryPicker *picker, NSString *selectedCountryCode, NSString *selectedCountryName);
 typedef void(^ActionCountryCancelBlock)(ActionSheetCountryPicker *picker);
-
-static const float firstColumnWidth = 100.0f;
-static const float secondColumnWidth = 160.0f;
 
 @interface ActionSheetCountryPicker : AbstractActionSheetPicker <UIPickerViewDelegate, UIPickerViewDataSource>
 
@@ -49,14 +46,14 @@ static const float secondColumnWidth = 160.0f;
  *
  *  @return  return instance of picker
  */
-+ (instancetype)showPickerWithTitle:(NSString *)title initialSelection:(NSTimeZone *)index target:(id)target successAction:(SEL)successAction cancelAction:(SEL)cancelActionOrNil origin:(id)origin;
++ (instancetype)showPickerWithTitle:(NSString *)title initialSelection:(NSString *)index target:(id)target successAction:(SEL)successAction cancelAction:(SEL)cancelActionOrNil origin:(id)origin;
 
 // Create an action sheet picker, but don't display until a subsequent call to "showActionPicker".  Receiver must release the picker when ready. */
-- (instancetype)initWithTitle:(NSString *)title initialSelection:(NSTimeZone *)index target:(id)target successAction:(SEL)successAction cancelAction:(SEL)cancelActionOrNil origin:(id)origin;
+- (instancetype)initWithTitle:(NSString *)title initialSelection:(NSString *)country target:(id)target successAction:(SEL)successAction cancelAction:(SEL)cancelActionOrNil origin:(id)origin;
 
-+ (instancetype)showPickerWithTitle:(NSString *)title initialSelection:(NSTimeZone *)index doneBlock:(ActionCountryDoneBlock)doneBlock cancelBlock:(ActionCountryCancelBlock)cancelBlock origin:(id)origin;
++ (instancetype)showPickerWithTitle:(NSString *)title initialSelection:(NSString *)country doneBlock:(ActionCountryDoneBlock)doneBlock cancelBlock:(ActionCountryCancelBlock)cancelBlock origin:(id)origin;
 
-- (instancetype)initWithTitle:(NSString *)title initialSelection:(NSTimeZone *)timeZone doneBlock:(ActionCountryDoneBlock)doneBlock cancelBlock:(ActionCountryCancelBlock)cancelBlockOrNil origin:(id)origin;
+- (instancetype)initWithTitle:(NSString *)title initialSelection:(NSString *)country doneBlock:(ActionCountryDoneBlock)doneBlock cancelBlock:(ActionCountryCancelBlock)cancelBlockOrNil origin:(id)origin;
 
 @property (nonatomic, copy) ActionCountryDoneBlock onActionSheetDone;
 @property (nonatomic, copy) ActionCountryCancelBlock onActionSheetCancel;

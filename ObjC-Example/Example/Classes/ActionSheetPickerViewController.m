@@ -140,8 +140,6 @@
 
 -(IBAction)selectATime:(id)sender {
 
-
-
     NSInteger minuteInterval = 5;
     //clamp date
     NSInteger referenceTimeInterval = (NSInteger)[self.selectedTime timeIntervalSinceReferenceDate];
