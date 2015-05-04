@@ -22,7 +22,13 @@ class ViewController: UIViewController {
     }
 
     @IBAction func btnClick(sender: AnyObject) {
-       ActionSheetDatePicker
+        ActionSheetLocalePicker.showPickerWithTitle("Locale picker", initialSelection: NSTimeZone(), doneBlock: {
+            picker, index in
+            
+            println("index = \(index)")
+            println("picker = \(picker)")
+            return
+            }, cancelBlock: { ActionStringCancelBlock in return }, origin: sender.superview!)
     }
 
 }
