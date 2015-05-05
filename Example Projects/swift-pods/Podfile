@@ -1,0 +1,11 @@
+# Uncomment this line to define a global platform for your project
+# platform :ios, '6.0'
+
+target 'swift-pods' do
+pod 'ActionSheetPicker-3.0'
+end
+
+target 'swift-podsTests' do
+
+end
+
