@@ -62,9 +62,10 @@
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+- (BOOL)shouldAutorotate {
     return YES;
 }
+
 
 #pragma mark - IBActions
 

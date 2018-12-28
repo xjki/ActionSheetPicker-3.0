@@ -120,7 +120,7 @@
 
     NSMutableDictionary *continentsDict = [[NSMutableDictionary alloc] init];
 
-    _continents= [[NSMutableArray alloc] init];
+    self.continents= [[NSMutableArray alloc] init];
 
     [timeZones enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop)
     {
@@ -140,7 +140,7 @@
                 {
                     NSMutableArray *mutableArray = [@[array[1]] mutableCopy];
                     continentsDict[array[0]] = mutableArray;
-                    [_continents addObject:array[0]];
+                    [self.continents addObject:array[0]];
                 }
             }
             else if (array.count == 3)
@@ -159,7 +159,7 @@
                 {
                     NSMutableArray *mutableArray = [@[string3] mutableCopy];
                     continentsDict[string0] = mutableArray;
-                    [_continents addObject:string0];
+                    [self.continents addObject:string0];
                 }
             }
         }
