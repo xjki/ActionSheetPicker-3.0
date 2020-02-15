@@ -4,11 +4,11 @@
 import PackageDescription
 
 let package = Package(
-    name: "ActionSheetPicker-3.0",
+    name: "CoreActionSheetPicker",
     products: [
         .library(
-            name: "ActionSheetPicker-3.0",
-            targets: ["ActionSheetPicker-3.0"]),
+            name: "CoreActionSheetPicker",
+            targets: ["CoreActionSheetPicker"]),
     ],
     targets: [
         .target(
