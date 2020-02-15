@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreActionSheetPicker
 
 class ViewController: UIViewController {
 
@@ -15,6 +16,21 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-
-}
+    @IBAction func acp_call(_ sender: Any) {
+        ActionSheetStringPicker.show(withTitle: "Picker from navigation bar",
+                                            rows: ["One", "Two", "A lot"],
+                                            initialSelection: 1,
+                                            doneBlock: { picker, value, index in
+                                               print("picker = \(String(describing: picker))")
+                                               print("value = \(value)")
+                                               print("index = \(String(describing: index))")
+                                               return
+                                            },
+                                            cancel: { picker in
+                                               return
+                                            },
+                                            origin: sender)
+           }
+    }
+    
 
