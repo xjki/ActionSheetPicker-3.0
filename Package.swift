@@ -13,10 +13,9 @@ let package = Package(
     targets: [
         .target(
             name: "CoreActionSheetPicker",
-            path: "Pickers/",
+            path: "CoreActionSheetPicker/",
             cSettings: [
-                .headerSearchPath("CoreActionSheetPicker/CoreActionSheetPicker.h"),
-                .headerSearchPath("Pickers/"),
+                .headerSearchPath("CoreActionSheetPicker/")
                 ])
         ],
     swiftLanguageVersions: [.v5]

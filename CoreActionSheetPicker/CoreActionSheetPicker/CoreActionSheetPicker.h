@@ -2,11 +2,11 @@
 //  CoreActionSheetPicker.h
 //  CoreActionSheetPicker
 //
-//  Created by Petr Korolev on 17/04/15.
-//  Copyright (c) 2015 Petr Korolev. All rights reserved.
+//  Created by Petr Korolev on 16.02.2020.
+//  Copyright © 2020 Petr Korolev. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 //! Project version number for CoreActionSheetPicker.
 FOUNDATION_EXPORT double CoreActionSheetPickerVersionNumber;

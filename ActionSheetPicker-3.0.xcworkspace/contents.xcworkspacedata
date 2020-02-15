@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:CoreActionSheetPicker/CoreActionSheetPicker/CoreActionSheetPicker/CoreActionSheetPicker/CoreActionSheetPicker.xcodeproj">
+      location = "group:CoreActionSheetPicker/CoreActionSheetPicker.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:CoreActionSheetPicker/../Package.swift">
