@@ -13,7 +13,7 @@ let package = Package(
     targets: [
         .target(
             name: "CoreActionSheetPicker",
-            path: "Pickers/")
+            path: ["Pickers/", "CoreActionSheetPicker/CoreActionSheetPicker.h"])
         ],
     swiftLanguageVersions: [.v5]
 )

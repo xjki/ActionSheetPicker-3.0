@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E234DCB23F87BE70086F7D3 /* CoreActionSheetPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 4E234DCA23F87BE70086F7D3 /* CoreActionSheetPicker */; };
 		4EF7B6ED23F50F0F0064983A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF7B6EC23F50F0F0064983A /* AppDelegate.swift */; };
 		4EF7B6EF23F50F0F0064983A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF7B6EE23F50F0F0064983A /* SceneDelegate.swift */; };
 		4EF7B6F123F50F0F0064983A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF7B6F023F50F0F0064983A /* ViewController.swift */; };
@@ -31,6 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E234DCB23F87BE70086F7D3 /* CoreActionSheetPicker in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +85,9 @@
 			dependencies = (
 			);
 			name = "ACP-SPM-integration";
+			packageProductDependencies = (
+				4E234DCA23F87BE70086F7D3 /* CoreActionSheetPicker */,
+			);
 			productName = "ACP-SPM-integration";
 			productReference = 4EF7B6E923F50F0F0064983A /* ACP-SPM-integration.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +116,9 @@
 				Base,
 			);
 			mainGroup = 4EF7B6E023F50F0F0064983A;
+			packageReferences = (
+				4E234DC923F87BE70086F7D3 /* XCRemoteSwiftPackageReference "ActionSheetPicker-3" */,
+			);
 			productRefGroup = 4EF7B6EA23F50F0F0064983A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -336,6 +344,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4E234DC923F87BE70086F7D3 /* XCRemoteSwiftPackageReference "ActionSheetPicker-3" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/skywinder/ActionSheetPicker-3.0";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.4.6;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4E234DCA23F87BE70086F7D3 /* CoreActionSheetPicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E234DC923F87BE70086F7D3 /* XCRemoteSwiftPackageReference "ActionSheetPicker-3" */;
+			productName = CoreActionSheetPicker;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4EF7B6E123F50F0F0064983A /* Project object */;
 }
