@@ -13,7 +13,7 @@
 		1C57845C1B15BE2C00172D8A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C57845A1B15BE2C00172D8A /* LaunchScreen.xib */; };
 		1C5784681B15BE2C00172D8A /* Swift_ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5784671B15BE2C00172D8A /* Swift_ExampleTests.swift */; };
 		1C5784721B15BE8900172D8A /* SWTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C5784711B15BE8900172D8A /* SWTableViewController.swift */; };
-		1C82C2D51C930C2B00F9520C /* CoreActionSheetPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C82C2D41C930C2B00F9520C /* CoreActionSheetPicker.framework */; };
+		4ECAB5C023F897AC00AF40B4 /* CoreActionSheetPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ECAB5BF23F897AC00AF40B4 /* CoreActionSheetPicker.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,19 +68,6 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		1C1194891B5E53EB00C68054 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		1C57844C1B15BE2C00172D8A /* Swift-Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swift-Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C5784501B15BE2C00172D8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -97,6 +84,7 @@
 		4E046A16239E3622005417FA /* ActionSheetPicker-iOS-before7.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "ActionSheetPicker-iOS-before7.xcodeproj"; path = "/Users/pk/repo/_PERSONAL/ActionSheetPicker-3.0/Example Projects/Example-for-iOS-7-and-6/ActionSheetPicker-iOS-before7.xcodeproj"; sourceTree = "<absolute>"; };
 		4E046A18239E362D005417FA /* ActionSheetPicker.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ActionSheetPicker.xcodeproj; path = "Example Projects/ObjC-Example/ActionSheetPicker.xcodeproj"; sourceTree = "<group>"; };
 		4E046A19239E362D005417FA /* ActionSheetPicker-iOS-before7.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "ActionSheetPicker-iOS-before7.xcodeproj"; path = "/Users/pk/repo/_PERSONAL/ActionSheetPicker-3.0/Example Projects/Example-for-iOS-7-and-6/ActionSheetPicker-iOS-before7.xcodeproj"; sourceTree = "<absolute>"; };
+		4ECAB5BF23F897AC00AF40B4 /* CoreActionSheetPicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CoreActionSheetPicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,7 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1C82C2D51C930C2B00F9520C /* CoreActionSheetPicker.framework in Frameworks */,
+				4ECAB5C023F897AC00AF40B4 /* CoreActionSheetPicker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,6 +115,7 @@
 				1C5784641B15BE2C00172D8A /* Swift-ExampleTests */,
 				1C57844D1B15BE2C00172D8A /* Products */,
 				4E046A17239E3622005417FA /* ArchiveExamples */,
+				4ECAB5BE23F897AC00AF40B4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -231,6 +220,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		4ECAB5BE23F897AC00AF40B4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4ECAB5BF23F897AC00AF40B4 /* CoreActionSheetPicker.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -241,7 +238,6 @@
 				1C5784481B15BE2C00172D8A /* Sources */,
 				1C5784491B15BE2C00172D8A /* Frameworks */,
 				1C57844A1B15BE2C00172D8A /* Resources */,
-				1C1194891B5E53EB00C68054 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
