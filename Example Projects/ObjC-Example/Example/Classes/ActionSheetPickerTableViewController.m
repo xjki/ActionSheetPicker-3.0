@@ -64,11 +64,11 @@
 #else
 // TODO: should remove it and drop ios 6 support.
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+- (BOOL)shouldAutorotate {
     return YES;
 }
 #endif
+
 
 #pragma mark - IBActions
 
